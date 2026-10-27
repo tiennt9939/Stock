@@ -1,0 +1,386 @@
+[
+  {
+    "name": "Vàng bạc",
+    "size": "C7"
+  },
+  {
+    "name": "Vàng bạc",
+    "size": "C9"
+  },
+  {
+    "name": "Vàng bạc",
+    "size": "C10"
+  },
+  {
+    "name": "Vàng bạc",
+    "size": "C12"
+  },
+  {
+    "name": "Nguyệt quế thái",
+    "size": "C7"
+  },
+  {
+    "name": "Nguyệt quế thái",
+    "size": "C9"
+  },
+  {
+    "name": "Nguyệt quế thái",
+    "size": "C10"
+  },
+  {
+    "name": "Cẩm tú mai",
+    "size": "C7"
+  },
+  {
+    "name": "Cẩm tú mai",
+    "size": "C9"
+  },
+  {
+    "name": "Cẩm tú mai",
+    "size": "C10"
+  },
+  {
+    "name": "Cẩm tú mai",
+    "size": "C11"
+  },
+  {
+    "name": "Trầu bà thanh xuân",
+    "size": "C9"
+  },
+  {
+    "name": "Trầu bà thanh xuân",
+    "size": "C10"
+  },
+  {
+    "name": "Trầu bà thanh xuân",
+    "size": "C11"
+  },
+  {
+    "name": "Trầu bà thanh xuân",
+    "size": "C13"
+  },
+  {
+    "name": "Mai vạn phúc C9",
+    "size": "C9"
+  },
+  {
+    "name": "Mai vạn phúc C10",
+    "size": "C10"
+  },
+  {
+    "name": "Mai vạn phúc C11",
+    "size": "C11"
+  },
+  {
+    "name": "Mai vạn phúc C16",
+    "size": "C16"
+  },
+  {
+    "name": "Ngọc ngân",
+    "size": "C7"
+  },
+  {
+    "name": "Ngọc ngân",
+    "size": "C9"
+  },
+  {
+    "name": "Phú quý c7",
+    "size": "C7"
+  },
+  {
+    "name": "Phú quý c9",
+    "size": "C9"
+  },
+  {
+    "name": "Táo thái",
+    "size": ""
+  },
+  {
+    "name": "Hàm hương",
+    "size": "C7"
+  },
+  {
+    "name": "Hàm hương",
+    "size": "C9"
+  },
+  {
+    "name": "Bụp thấp nhiều màu",
+    "size": "C9"
+  },
+  {
+    "name": "Lài Tây",
+    "size": "C9"
+  },
+  {
+    "name": "Lài Tây",
+    "size": "C11"
+  },
+  {
+    "name": "Dừa cạn nhiều màu",
+    "size": ""
+  },
+  {
+    "name": "Phong lá đỏ C7",
+    "size": "C7"
+  },
+  {
+    "name": "Trang thái (đỏ, vàng, hồng) C9",
+    "size": "C9"
+  },
+  {
+    "name": "Trang thái (đỏ, vàng, hồng) C10",
+    "size": "C10"
+  },
+  {
+    "name": "Trang thái (đỏ, vàng, hồng) T25",
+    "size": "T25"
+  },
+  {
+    "name": "Trang thái (đỏ, vàng, hồng) T28",
+    "size": "T28"
+  },
+  {
+    "name": "Trang thái (đỏ, vàng, hồng) tàng 1m",
+    "size": "tàng 1m"
+  },
+  {
+    "name": "Hồng phụng C9",
+    "size": "C9"
+  },
+  {
+    "name": "Hồng phụng C11",
+    "size": "C11"
+  },
+  {
+    "name": "Hồng siêu nụ C9",
+    "size": "C9"
+  },
+  {
+    "name": "Hồng siêu nụ C11",
+    "size": "C11"
+  },
+  {
+    "name": "Sơn liễu C9",
+    "size": "C9"
+  },
+  {
+    "name": "Sơn liễu C7",
+    "size": "C7"
+  },
+  {
+    "name": "Trầu bà sữa C9",
+    "size": "C9"
+  },
+  {
+    "name": "Trang mỹ hồng (hồng + đỏ + vàng) C9",
+    "size": "C9"
+  },
+  {
+    "name": "Thiên lý C9",
+    "size": "C9"
+  },
+  {
+    "name": "Cau Đài Loan C10",
+    "size": "C10"
+  },
+  {
+    "name": "Chuối rẽ quạt C11",
+    "size": "C11"
+  },
+  {
+    "name": "Cây không khí 1 bó",
+    "size": "1 bó"
+  },
+  {
+    "name": "Vạn lộc C7",
+    "size": "C7"
+  },
+  {
+    "name": "Vạn lộc C9",
+    "size": "C9"
+  },
+  {
+    "name": "Nghệ tây C10",
+    "size": "C10"
+  },
+  {
+    "name": "Bướm (hồng + trắng) C9",
+    "size": "C9"
+  },
+  {
+    "name": "Địa lan tím C8",
+    "size": "C8"
+  },
+  {
+    "name": "Chuối cẩm thạch C9",
+    "size": "C9"
+  },
+  {
+    "name": "Chuối cẩm thạch C11",
+    "size": "C11"
+  },
+  {
+    "name": "Tùng bồng lai tiên cảnh chậu gốm",
+    "size": "chậu gốm"
+  },
+  {
+    "name": "Trúc quân tử (3 cây)",
+    "size": "3 cây"
+  },
+  {
+    "name": "Kim Tiền",
+    "size": "C9"
+  },
+  {
+    "name": "Kim Tiền",
+    "size": "C10"
+  },
+  {
+    "name": "Kim Tiền",
+    "size": "C12"
+  },
+  {
+    "name": "Thanh xà",
+    "size": "C9"
+  },
+  {
+    "name": "Thanh xà",
+    "size": "C10"
+  },
+  {
+    "name": "Hồng phát tài",
+    "size": "C7"
+  },
+  {
+    "name": "Hồng phát tài",
+    "size": "C9"
+  },
+  {
+    "name": "Lan chi",
+    "size": "C9"
+  },
+  {
+    "name": "Polly",
+    "size": "C9"
+  },
+  {
+    "name": "Lindini",
+    "size": "C7"
+  },
+  {
+    "name": "Hạc cam",
+    "size": "C9"
+  },
+  {
+    "name": "Hạc cam",
+    "size": "C10"
+  },
+  {
+    "name": "Trầu bà lỗ",
+    "size": "C7"
+  },
+  {
+    "name": "Như ý",
+    "size": "C7"
+  },
+  {
+    "name": "Sơn liễu",
+    "size": "C7"
+  },
+  {
+    "name": "Sơn liễu",
+    "size": "C9"
+  },
+  {
+    "name": "Gia huy",
+    "size": "C9"
+  },
+  {
+    "name": "Lá màu",
+    "size": "C9"
+  },
+  {
+    "name": "Liễu 2 da cẩm thạch",
+    "size": "C9"
+  },
+  {
+    "name": "Lan quân tử",
+    "size": "C9"
+  },
+  {
+    "name": "Quỳnh hương đỏ vàng",
+    "size": "C9"
+  },
+  {
+    "name": "Đuôi công xanh + tím + hồng",
+    "size": "C9"
+  },
+  {
+    "name": "Phát tài lá đỏ",
+    "size": "C9"
+  },
+  {
+    "name": "Phát tài mỹ",
+    "size": "C9"
+  },
+  {
+    "name": "Thiết mộc lan",
+    "size": "C9"
+  },
+  {
+    "name": "Thiết mộc lan",
+    "size": "C11"
+  },
+  {
+    "name": "Cây trường sinh",
+    "size": "C7"
+  },
+  {
+    "name": "Cây trường sinh",
+    "size": "C9"
+  },
+  {
+    "name": "Thiên tuế",
+    "size": "C9"
+  },
+  {
+    "name": "Thiên tuế",
+    "size": "C11"
+  },
+  {
+    "name": "Thiên tuế",
+    "size": "C13"
+  },
+  {
+    "name": "Đại phú",
+    "size": "C10"
+  },
+  {
+    "name": "Đại phú",
+    "size": "C11"
+  },
+  {
+    "name": "Bàng sing",
+    "size": "C9"
+  },
+  {
+    "name": "Bàng sing",
+    "size": "C11"
+  },
+  {
+    "name": "Tùng đuôi chồn",
+    "size": "C9"
+  },
+  {
+    "name": "Tùng đuôi chồn",
+    "size": "C10"
+  },
+  {
+    "name": "Tiểu trâm",
+    "size": "C9"
+  },
+  {
+    "name": "Tiểu trâm",
+    "size": "C11"
+  }
+]
