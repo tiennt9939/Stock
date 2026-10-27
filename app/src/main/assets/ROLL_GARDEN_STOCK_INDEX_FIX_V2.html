@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ROLL GARDEN STOCK</title>
+<style>
+:root{--green:#086b49;--green2:#0d8b60;--pale:#e8f6ef;--ink:#16342a;--muted:#66756f;--line:#dce8e1;--bg:#f4f8f5;--red:#c83d45;--amber:#ad7100}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}header{background:linear-gradient(120deg,#07573d,#0c8a5c);color:#fff;padding:18px 16px 16px;position:sticky;top:0;z-index:4;box-shadow:0 3px 14px #153c2a22}header h1{margin:0;font-size:20px;letter-spacing:.3px}header p{margin:4px 0 0;font-size:12px;opacity:.88}.wrap{max-width:1100px;margin:auto;padding:14px}.tabs{display:flex;gap:7px;overflow:auto;padding:4px 0 12px}.tab{border:1px solid var(--line);border-radius:12px;background:#fff;padding:10px 13px;white-space:nowrap;color:var(--ink);font-weight:650}.tab.active{background:var(--green);color:#fff;border-color:var(--green)}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;margin-bottom:13px;box-shadow:0 3px 12px #163c2a08}.panel h2{font-size:17px;margin:0 0 10px}.muted{color:var(--muted);font-size:13px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.stat{background:var(--pale);border-radius:13px;padding:12px}.stat b{display:block;font-size:24px;color:var(--green)}.stat span{font-size:12px;color:#43675a}.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.btn{border:0;background:var(--green);color:white;padding:11px 14px;border-radius:10px;font-weight:700;cursor:pointer}.btn.secondary{background:#e7f4ed;color:var(--green);border:1px solid #c8e6d6}.btn.danger{background:#fff0f0;color:var(--red);border:1px solid #f4c8cb}.btn:disabled{opacity:.45;cursor:not-allowed}input,select{font:inherit;border:1px solid #cddbd3;border-radius:9px;padding:10px;background:#fff;color:var(--ink);max-width:100%}input[type=file]{width:100%;border:1px dashed #9db9aa;padding:14px;background:#f8fcf9}label{font-size:13px;font-weight:650;display:block;margin-bottom:5px}.field{min-width:150px;flex:1}table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:9px 8px;border-bottom:1px solid #e7eee9;text-align:left;vertical-align:top}th{background:#f0f7f3;color:#315b49;position:sticky;top:0}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}.tablewrap{overflow:auto;max-height:58vh;border:1px solid #e3ece6;border-radius:10px}.badge{display:inline-block;padding:3px 7px;border-radius:20px;font-size:11px;font-weight:700}.ok{background:#def5e8;color:#147044}.warn{background:#fff0cc;color:#875700}.bad{background:#ffe2e3;color:#a42a31}.hidden{display:none!important}.note{border-left:4px solid #e6aa39;background:#fff8e7;padding:10px 12px;border-radius:7px;font-size:13px}.goodnote{border-left:4px solid var(--green2);background:#eef9f2;padding:10px 12px;border-radius:7px;font-size:13px}.small{font-size:11px;color:var(--muted)}.footer{padding:12px 4px 24px;text-align:center;color:var(--muted);font-size:11px}.bar{height:8px;border-radius:10px;background:#e6eee9;overflow:hidden;margin-top:8px}.bar span{display:block;height:100%;width:0;background:var(--green2);transition:width .2s}.right{margin-left:auto}.inline-edit{width:100%;min-width:75px;padding:6px}.empty{text-align:center;padding:25px;color:var(--muted)}@media(max-width:680px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding:10px}.panel{padding:12px}.tab{padding:9px 11px}table{font-size:12px}th,td{padding:7px 6px}.stat b{font-size:22px}}
+</style>
+</head>
+<body>
+<header><h1>🌿 ROLL GARDEN STOCK</h1><p>Đọc PDF nhãn đóng gói • Tổng hợp nhu cầu • Đối chiếu tồn kho</p></header>
+<div class="wrap">
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-tab="home">Nhập PDF</button><button class="tab" data-tab="overview">Tổng quan</button><button class="tab" data-tab="items">Theo loại cây</button><button class="tab" data-tab="peritem">Số cây từng loại/đơn</button><button class="tab" data-tab="perorder">Tổng cây/đơn</button><button class="tab" data-tab="stock">Tồn kho</button><button class="tab" data-tab="catalog">Danh mục cây</button><button class="tab" data-tab="export">Xuất dữ liệu</button>
+  </nav>
+
+  <section id="home" class="view">
+    <div class="panel">
+      <h2>1. Chọn file PDF đơn hàng</h2>
+      <p class="muted">Chọn PDF nhãn đóng gói. Ứng dụng sẽ đọc từng trang bằng OCR trên thiết bị. Tên cây được đối chiếu với danh mục lấy từ ROLL CÂY CẢNH; dòng không chắc chắn sẽ được đánh dấu để kiểm tra.</p>
+      <input id="pdfFile" type="file" accept="application/pdf,.pdf">
+      <div class="row" style="margin-top:12px"><button id="readPdf" class="btn">Đọc và phân tích PDF</button><button id="demo" class="btn secondary">Dùng dữ liệu kiểm thử</button><button id="clear" class="btn danger">Xóa dữ liệu phiên này</button></div>
+      <div class="bar"><span id="progress"></span></div><p id="status" class="muted">Chưa chọn file.</p>
+    </div>
+    <div class="panel">
+      <h2>2. Kiểm tra và chuẩn hóa dữ liệu</h2>
+      <div class="note">Lưu ý: chưa có PDF nhãn đóng gói gốc trong bộ tệp hiện tại. Cách tách mã đơn và số lượng vì vậy cần được đối chiếu lần đầu với PDF thực tế. Không dùng số liệu chưa xác nhận để chốt nhập kho.</div>
+      <p class="muted">Bạn có thể sửa trực tiếp tên cây, quy cách, số lượng trong bảng bên dưới; hoặc thêm dòng thủ công nếu PDF có định dạng đặc biệt.</p>
+      <div class="row"><button id="addRow" class="btn secondary">+ Thêm dòng sản phẩm</button><button id="showRaw" class="btn secondary">Xem văn bản PDF đã trích xuất</button></div>
+      <div id="rawBox" class="hidden" style="margin-top:10px"><textarea id="rawText" style="width:100%;height:180px;border:1px solid var(--line);border-radius:9px;padding:10px" placeholder="Văn bản trích xuất sẽ xuất hiện ở đây"></textarea><button id="reparse" class="btn" style="margin-top:8px">Phân tích lại văn bản</button></div>
+    </div>
+    <div class="panel"><h2>Danh sách sản phẩm đã nhận diện</h2><div id="itemsTable"></div></div>
+  </section>
+
+  <section id="overview" class="view hidden">
+    <div class="grid" id="stats"></div>
+    <div class="panel"><h2>Trạng thái dữ liệu</h2><div id="health"></div></div>
+    <div class="panel"><h2>Top nhu cầu theo cây/quy cách</h2><div id="topTable"></div></div>
+  </section>
+  <section id="items" class="view hidden"><div class="panel"><h2>Tổng nhu cầu theo tên cây và quy cách</h2><p class="muted">Mỗi dòng là một nhóm cây/quy cách đã chuẩn hóa. Nhấn vào số lượng để xem dữ liệu nguồn ở bản phát triển tiếp theo.</p><div id="demandTable"></div></div></section>
+  <section id="peritem" class="view hidden"><div class="panel"><h2>Phân loại theo số cây của từng loại trong đơn</h2><p class="muted">Đúng theo nghiệp vụ: nhóm theo Tên cây + Quy cách + Combo (1, 2, 3, 4… cây của loại đó trong một đơn); đếm số đơn có cùng bộ 3 thông tin; tính Tổng cây = Combo × Số đơn. Nếu một đơn có nhiều dòng trùng cùng cây/quy cách, hệ thống cộng chúng trong đơn trước khi phân nhóm.</p><div id="perItemTable"></div></div></section>
+  <section id="perorder" class="view hidden"><div class="panel"><h2>Phân loại theo tổng số cây của cả đơn</h2><p class="muted">Tổng số cây của đơn là tổng số lượng tất cả dòng sản phẩm trong cùng một đơn. Cần có mã đơn hoặc cách xác định ranh giới đơn trong PDF để tính chính xác.</p><div id="perOrderTable"></div></div></section>
+  <section id="stock" class="view hidden">
+    <div class="panel"><h2>Đối chiếu tồn kho</h2><div class="goodnote">Nhập tồn kho khả dụng theo từng loại/quy cách. Số cây cần bổ sung = nhu cầu − tồn kho, không thấp hơn 0. Dữ liệu tồn kho chỉ lưu trong trình duyệt trên thiết bị này.</div><div id="stockTable" style="margin-top:12px"></div></div>
+  </section>
+  <section id="catalog" class="view hidden">
+  <div class="panel"><h2>Danh mục cây dùng để nhận diện</h2><p class="muted">Danh mục khởi tạo từ catalog trong source ROLL CÂY CẢNH bạn đã gửi. Có thể sửa tên/quy cách hoặc nhập JSON sao lưu của ứng dụng hiện tại. Danh mục chỉ dùng cho ROLL GARDEN STOCK, không sửa source gốc.</p><div class="row"><button class="btn" id="addCatalog">+ Thêm cây</button><button class="btn secondary" id="importCatalogBtn">Nhập JSON danh mục</button><button class="btn secondary" id="exportCatalogBtn">Xuất JSON danh mục</button><input class="hidden" id="catalogFile" type="file" accept="application/json,.json"></div><div id="catalogTable" style="margin-top:12px"></div></div>
+</section>
+<section id="export" class="view hidden">
+    <div class="panel"><h2>Xuất dữ liệu</h2><p class="muted">Xuất CSV mở được bằng Excel/Google Sheets. Bản tiếp theo có thể bổ sung tệp XLSX nhiều sheet sau khi xác nhận định dạng PDF thực tế.</p><div class="row"><button class="btn" id="exportDemand">Xuất tổng nhu cầu CSV</button><button class="btn secondary" id="exportPerItem">Xuất phân loại cây/đơn CSV</button><button class="btn secondary" id="exportOrders">Xuất thống kê tổng cây/đơn CSV</button><button class="btn secondary" id="exportAll">Xuất tất cả dữ liệu CSV</button><button class="btn secondary" id="exportBackup">Sao lưu toàn bộ JSON</button><button class="btn secondary" id="importBackupBtn">Khôi phục JSON</button><input class="hidden" id="backupFile" type="file" accept="application/json,.json"></div></div>
+    <div class="panel"><h2>Quy tắc an toàn dữ liệu</h2><ul><li>Nếu không đọc được mã đơn, ứng dụng dùng mã trang tạm và đánh dấu cần xác nhận.</li><li>Không tự đoán tên cây khi không khớp danh mục.</li><li>Dữ liệu đơn và tồn kho lưu cục bộ trên điện thoại; không tự gửi lên máy chủ.</li><li>Nhập danh mục JSON từ bản sao lưu ROLL CÂY CẢNH để làm mới danh mục nếu cần.</li></ul></div>
+  </section>
+  <div class="footer">ROLL GARDEN STOCK · Lưu cục bộ trên thiết bị · Không đồng bộ hoặc gửi dữ liệu lên máy chủ. Luôn đối chiếu dòng cần kiểm tra với PDF gốc.</div>
+</div>
+<script>
+const SEED_CATALOG = [{"name":"Vàng bạc","size":"C7"},{"name":"Vàng bạc","size":"C9"},{"name":"Vàng bạc","size":"C10"},{"name":"Vàng bạc","size":"C12"},{"name":"Nguyệt quế thái","size":"C7"},{"name":"Nguyệt quế thái","size":"C9"},{"name":"Nguyệt quế thái","size":"C10"},{"name":"Cẩm tú mai","size":"C7"},{"name":"Cẩm tú mai","size":"C9"},{"name":"Cẩm tú mai","size":"C10"},{"name":"Cẩm tú mai","size":"C11"},{"name":"Trầu bà thanh xuân","size":"C9"},{"name":"Trầu bà thanh xuân","size":"C10"},{"name":"Trầu bà thanh xuân","size":"C11"},{"name":"Trầu bà thanh xuân","size":"C13"},{"name":"Mai vạn phúc C9","size":"C9"},{"name":"Mai vạn phúc C10","size":"C10"},{"name":"Mai vạn phúc C11","size":"C11"},{"name":"Mai vạn phúc C16","size":"C16"},{"name":"Ngọc ngân","size":"C7"},{"name":"Ngọc ngân","size":"C9"},{"name":"Phú quý c7","size":"C7"},{"name":"Phú quý c9","size":"C9"},{"name":"Táo thái","size":""},{"name":"Hàm hương","size":"C7"},{"name":"Hàm hương","size":"C9"},{"name":"Bụp thấp nhiều màu","size":"C9"},{"name":"Lài Tây","size":"C9"},{"name":"Lài Tây","size":"C11"},{"name":"Dừa cạn nhiều màu","size":""},{"name":"Phong lá đỏ C7","size":"C7"},{"name":"Trang thái (đỏ, vàng, hồng) C9","size":"C9"},{"name":"Trang thái (đỏ, vàng, hồng) C10","size":"C10"},{"name":"Trang thái (đỏ, vàng, hồng) T25","size":"T25"},{"name":"Trang thái (đỏ, vàng, hồng) T28","size":"T28"},{"name":"Trang thái (đỏ, vàng, hồng) tàng 1m","size":"tàng 1m"},{"name":"Hồng phụng C9","size":"C9"},{"name":"Hồng phụng C11","size":"C11"},{"name":"Hồng siêu nụ C9","size":"C9"},{"name":"Hồng siêu nụ C11","size":"C11"},{"name":"Sơn liễu C9","size":"C9"},{"name":"Sơn liễu C7","size":"C7"},{"name":"Trầu bà sữa C9","size":"C9"},{"name":"Trang mỹ hồng (hồng + đỏ + vàng) C9","size":"C9"},{"name":"Thiên lý C9","size":"C9"},{"name":"Cau Đài Loan C10","size":"C10"},{"name":"Chuối rẽ quạt C11","size":"C11"},{"name":"Cây không khí 1 bó","size":"1 bó"},{"name":"Vạn lộc C7","size":"C7"},{"name":"Vạn lộc C9","size":"C9"},{"name":"Nghệ tây C10","size":"C10"},{"name":"Bướm (hồng + trắng) C9","size":"C9"},{"name":"Địa lan tím C8","size":"C8"},{"name":"Chuối cẩm thạch C9","size":"C9"},{"name":"Chuối cẩm thạch C11","size":"C11"},{"name":"Tùng bồng lai tiên cảnh chậu gốm","size":"chậu gốm"},{"name":"Trúc quân tử (3 cây)","size":"3 cây"},{"name":"Kim Tiền","size":"C9"},{"name":"Kim Tiền","size":"C10"},{"name":"Kim Tiền","size":"C12"},{"name":"Thanh xà","size":"C9"},{"name":"Thanh xà","size":"C10"},{"name":"Hồng phát tài","size":"C7"},{"name":"Hồng phát tài","size":"C9"},{"name":"Lan chi","size":"C9"},{"name":"Polly","size":"C9"},{"name":"Lindini","size":"C7"},{"name":"Hạc cam","size":"C9"},{"name":"Hạc cam","size":"C10"},{"name":"Trầu bà lỗ","size":"C7"},{"name":"Như ý","size":"C7"},{"name":"Sơn liễu","size":"C7"},{"name":"Sơn liễu","size":"C9"},{"name":"Gia huy","size":"C9"},{"name":"Lá màu","size":"C9"},{"name":"Liễu 2 da cẩm thạch","size":"C9"},{"name":"Lan quân tử","size":"C9"},{"name":"Quỳnh hương đỏ vàng","size":"C9"},{"name":"Đuôi công xanh + tím + hồng","size":"C9"},{"name":"Phát tài lá đỏ","size":"C9"},{"name":"Phát tài mỹ","size":"C9"},{"name":"Thiết mộc lan","size":"C9"},{"name":"Thiết mộc lan","size":"C11"},{"name":"Cây trường sinh","size":"C7"},{"name":"Cây trường sinh","size":"C9"},{"name":"Thiên tuế","size":"C9"},{"name":"Thiên tuế","size":"C11"},{"name":"Thiên tuế","size":"C13"},{"name":"Đại phú","size":"C10"},{"name":"Đại phú","size":"C11"},{"name":"Bàng sing","size":"C9"},{"name":"Bàng sing","size":"C11"},{"name":"Tùng đuôi chồn","size":"C9"},{"name":"Tùng đuôi chồn","size":"C10"},{"name":"Tiểu trâm","size":"C9"},{"name":"Tiểu trâm","size":"C11"}];
+let catalog=[];
+let rows=[], raw='', fileName='', stock={}, importedFiles={};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=n=>Number(n||0).toLocaleString('vi-VN');
+function setStatus(s,p){$('status').textContent=s;if(p!==undefined)$('progress').style.width=p+'%'}
+function switchTab(name){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('hidden',x.id!==name));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===name));renderAll()}
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(b)switchTab(b.dataset.tab)});
+function normalizePlant(s){return String(s||'').trim().replace(/\s+/g,' ').replace(/[–—]/g,'-')}
+function fold(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ')}
+function baseCatalogName(s){return normalizePlant(s).replace(/\s+(?:C\s*\d{1,2}|T\s*\d{1,2}|t[aà]ng\s*\d+(?:[.,]\d+)?\s*m|1\s*(?:bó|bo)|\d+\s*(?:cây|cay|chậu|chau))\s*$/i,'').replace(/\s*\(\s*\d+\s*(?:cây|cay)\s*\)\s*$/i,'').trim()}
+function parseSize(s){let t=String(s||'').match(/\b(C\s*\d{1,2}|T\s*\d{1,2})\b/i);if(t)return t[1].replace(/\s+/g,'').toUpperCase();let x=String(s||'').match(/\bt[aà]ng\s*\d+(?:[.,]\d+)?\s*m\b/i);if(x)return x[0].replace(/\s+/g,' ').trim();if(/chậu\s+gốm/i.test(s))return 'chậu gốm';if(/\b1\s*bó\b/i.test(s))return '1 bó';return ''}
+function detectOrderId(line){let s=fold(String(line||''));let m=s.match(/(?:ma\s*(?:don(?:\s*hang)?|dh)|order\s*(?:id|no|number)?|don\s*hang\s*(?:so|#)?|order\s*#)\s*[:#-]?\s*([a-z0-9][a-z0-9_-]{2,})/i);return m?m[1].toUpperCase():''}
+function catalogOptions(){const m=new Map();for(const p of catalog){let name=normalizePlant(p.name),size=normalizePlant(p.size);if(!name)continue;const base=baseCatalogName(name);const key=fold(base);if(!m.has(key))m.set(key,{name:base||name,options:[]});if(!m.get(key).options.some(x=>fold(x.size)===fold(size)))m.get(key).options.push({name,size,rawName:name})}return [...m.values()].sort((a,b)=>b.name.length-a.name.length)}
+function findPlantMatch(line){const f=fold(line);if(!f)return null;for(const p of catalogOptions()){const alias=fold(p.name);if(alias.length<2)continue;const re=new RegExp('(?:^| )'+alias.replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/\s+/g,'\\s+')+'(?: |$)','i');if(re.test(f))return p}const aliases=[{a:'chu vang bac',name:'Vàng bạc'},{a:'nguyet que thai',name:'Nguyệt quế thái'}];for(const x of aliases){if(f.includes(x.a)){const found=catalogOptions().find(p=>fold(p.name)===fold(x.name));if(found)return found}}if(/\brubi\b|\bruby\b/i.test(f))return {name:'Rubi đỏ',options:[]};return null}
+function extractLineQuantity(ctx,match){const original=String(ctx||'');const text=fold(original);let combo=0, gift=0;let plusCombo=original.match(/combo\s*(\d{1,3})\s*\+\s*(\d{1,3})/i);let cm=text.match(/combo\s*(\d{1,3})\s*(?:cay|chau)?\s*(?:va)?\s*(?:tang\s*(\d{1,3}))?/i);if(plusCombo){combo=Number(plusCombo[1])||0;gift=Number(plusCombo[2])||0}else if(cm){combo=Number(cm[1])||0;gift=Number(cm[2])||0}let gm=text.match(/(\d{1,3})\s*cay\s*(?:tang|\+)\s*(\d{1,3})/i);if(gm){combo=Number(gm[1])||combo;gift=Number(gm[2])||gift}let pack=Math.max(0,combo+gift);let explicit=null;let q=text.match(/(?:^|\s)(?:so\s*luong|sl|qty|quantity)\s*(\d{1,4})\b/i);if(q)explicit=Number(q[1]);if(explicit===null){let x=original.match(/[×x]\s*(\d{1,4})\b/i);if(x&&!/combo\s*\d+\s*[×x]/i.test(original))explicit=Number(x[1])}if(explicit===null){let by=text.match(/(?:^|\s)(\d{1,4})\s*(?:cay|chau)\b/i);if(by&&!gift)explicit=Number(by[1])}let qty;if(pack>0)qty=pack*(explicit||1);else qty=explicit||1;return {qty:Math.max(0,Math.floor(qty)),explicit:explicit!==null,combo:pack||0}}
+function resolveCatalogSize(match,ctx){let explicit=parseSize(ctx);const opts=match?.options||[];if(explicit){const hit=opts.find(x=>fold(x.size)===fold(explicit));if(hit)return {size:hit.size,confidence:'Khớp tên + quy cách'};return {size:explicit,confidence:'Quy cách chưa có trong catalog'}}const c7=opts.find(x=>fold(x.size)==='c7');if(c7)return {size:c7.size,confidence:'Mặc định C7 · cần đối chiếu'};if(opts.length===1)return {size:opts[0].size,confidence:'Chỉ có một quy cách trong catalog'};return {size:'',confidence:'Chưa rõ quy cách'}}
+function parseText(text){raw=text;const lines=String(text||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);let out=[],currentOrder='',currentPage=0,hasIdOnPage=false;const pages=[];let active=[];for(const line of lines){const pm=line.match(/^\[\[PAGE\s*:\s*(\d+)\]\]$/i);if(pm){if(active.length)pages.push({page:currentPage||pages.length+1,lines:active});currentPage=Number(pm[1]);active=[];continue}active.push(line)}if(active.length)pages.push({page:currentPage||pages.length+1,lines:active});if(!pages.length)pages.push({page:1,lines});
+ for(const page of pages){currentOrder='';hasIdOnPage=page.lines.some(l=>!!detectOrderId(l));for(let i=0;i<page.lines.length;i++){const line=page.lines[i];const oid=detectOrderId(line);if(oid)currentOrder=oid;const found=findPlantMatch(line);if(!found)continue;const contextParts=[line];const prevLine=page.lines[i-1]||'';if(prevLine&&!findPlantMatch(prevLine)&&!detectOrderId(prevLine))contextParts.unshift(prevLine);for(let j=i+1;j<=Math.min(page.lines.length-1,i+2);j++){const neighbor=page.lines[j];if(findPlantMatch(neighbor)||detectOrderId(neighbor))break;contextParts.push(neighbor)}const forwardContext=contextParts.join(' ');const size=resolveCatalogSize(found,forwardContext)||{size:'',confidence:'Chưa rõ quy cách'};let q=extractLineQuantity(line,found);if(!q.explicit){const contextualQty=extractLineQuantity(forwardContext,found);if(contextualQty.explicit||contextualQty.combo>0)q=contextualQty}let confidence=size.confidence;if(!q.explicit)confidence+=' · chưa thấy SL, mặc định 1 lần';if(!currentOrder)confidence+=' · chưa có mã đơn';let order=currentOrder||('TRANG_'+String(page.page).padStart(3,'0'));let name=found.name;let canonical=found.options.find(x=>fold(x.size)===fold(size.size));if(canonical)name=baseCatalogName(canonical.name)||found.name;if(/chữ vàng bạc|chu vang bac/i.test(line))name='Vàng bạc';let key=fold(name);if(key==='nguyet que thai')name='Nguyệt quế thái';let already=out.some(r=>r.order===order&&fold(r.name)===fold(name)&&fold(r.size)===fold(size.size)&&r.source===line);if(already)continue;out.push({order,name,size:size.size,qty:q.qty,source:line,confidence, page:page.page})}}
+ // Stable order ids and never turn unknown product text into an invented plant.
+ return out}
+// Packing List parser v2: preserves page/order boundaries and reads Product Name, SKU and Qty by OCR coordinates.
+function stockProductMatch(productText){
+ const f=fold(productText);
+ const rules=[['vang vac hoang kim','Vàng bạc'],['chu vang bac','Vàng bạc'],['vang bac','Vàng bạc'],['kim phat tai','Kim Tiền'],['kim tien','Kim Tiền'],['nguyet que thai','Nguyệt quế thái'],['cam tu mai','Cẩm tú mai'],['ruby do','Rubi đỏ'],['ruby','Rubi đỏ'],['rubi','Rubi đỏ'],['duong si','Dương Sỉ'],['hoa 10 gio','Hoa 10 giờ']];
+ for(const [alias,name] of rules){if((' '+f+' ').includes(' '+alias+' ')){const item=catalogOptions().find(x=>fold(x.name)===fold(name));return item||{name,options:[]}}}
+ return findPlantMatch(productText);
+}
+function stockGroupOcrRows(page){
+ const els=(Array.isArray(page.elements)?page.elements:[]).filter(e=>String(e.text||'').trim()&&Number.isFinite(Number(e.x))&&Number.isFinite(Number(e.y)));
+ if(!els.length)return [];
+ const sorted=els.map(e=>({...e,text:String(e.text||'').trim(),cx:Number(e.x)+Number(e.w||0)/2,cy:Number(e.y)+Number(e.h||0)/2})).sort((a,b)=>a.cy-b.cy||a.cx-b.cx);
+ const out=[];
+ for(const e of sorted){let target=null;for(let j=out.length-1;j>=Math.max(0,out.length-4);j--){if(Math.abs(out[j].cy-e.cy)<=0.0038){target=out[j];break}if(out[j].cy<e.cy-0.009)break}
+  if(!target){target={cy:e.cy,els:[]};out.push(target)}target.els.push(e);target.cy=target.els.reduce((sum,x)=>sum+x.cy,0)/target.els.length;
+ }
+ for(const row of out){row.els.sort((a,b)=>a.cx-b.cx);row.text=row.els.map(e=>e.text).join(' ');row.left=row.els.filter(e=>e.cx<0.462).map(e=>e.text).join(' ').trim();row.sku=row.els.filter(e=>e.cx>=0.462&&e.cx<0.545).map(e=>e.text).join(' ').trim();row.seller=row.els.filter(e=>e.cx>=0.545&&e.cx<0.692).map(e=>e.text).join(' ').trim();row.qtyEls=row.els.filter(e=>e.cx>=0.692&&/^\d{1,4}$/.test(e.text));}
+ return out.sort((a,b)=>a.cy-b.cy);
+}
+function stockPackSize(name,productText,skuText,sellerText){
+ const p=String(productText||''),all=p+' '+String(skuText||'')+' '+String(sellerText||'');
+ const productCs=[...new Set((p.match(/\bC\s*\d{1,2}\b/gi)||[]).map(x=>x.replace(/\s+/g,'').toUpperCase()))];
+ let size='',confidence='';
+ if(productCs.length===1){size=productCs[0];confidence='Quy cách trong Product Name'}
+ else if(productCs.length>1){
+  const variantCs=[...new Set(((String(sellerText||'')+' '+String(skuText||'')).match(/\bC\s*\d{1,2}\b/gi)||[]).map(x=>x.replace(/\s+/g,'').toUpperCase()))];
+  const hits=variantCs.filter(x=>productCs.includes(x));
+  if(hits.length===1){size=hits[0];confidence='Quy cách được phân biệt bằng biến thể SKU; kiểm tra Product Name'}
+  else {size=productCs.join('/');confidence='Product Name có nhiều quy cách; cần kiểm tra'}
+ }
+ if(!size){
+  const height=p.match(/\b(\d{1,3})\s*[-–]\s*(\d{1,3})\s*cm\b/i);
+  if(height){const heightText=height[1]+'-'+height[2]+' cm';const n=fold(name);
+   if(n==='nguyet que thai'&&height[1]==='15'&&height[2]==='20'){size='C7';confidence='Chiều cao 15–20 cm → C7'}
+   else if(n==='nguyet que thai'&&height[1]==='20'&&height[2]==='30'){size='C9';confidence='Chiều cao 20–30 cm → C9'}
+   else {size=heightText;confidence='Quy cách chiều cao trong Product Name'}
+  }
+ }
+ if(!size){
+  const variantCs=[...new Set(((String(sellerText||'')+' '+String(skuText||'')).match(/\bC\s*\d{1,2}\b/gi)||[]).map(x=>x.replace(/\s+/g,'').toUpperCase()))];
+  if(variantCs.length===1){size=variantCs[0];confidence='Quy cách biến thể; Product Name không ghi rõ'}
+ }
+ if(!size){
+  const options=(catalogOptions().find(x=>fold(x.name)===fold(name))||{}).options||[];
+  if(options.some(x=>fold(x.size)==='c7')){size='C7';confidence='Mặc định C7; cần đối chiếu'}
+  else if(options.length===1&&options[0].size){size=options[0].size;confidence='Quy cách duy nhất trong danh mục'}
+  else {size='C7';confidence='Mặc định C7; cần xác nhận'}
+ }
+ return {size,confidence};
+}
+function stockPackCount(productText,skuText,sellerText){
+ const p=String(productText||''),sku=String(skuText||''),seller=String(sellerText||'');
+ function from(s){
+  const giftCombo=s.match(/\bcombo\s*(\d{1,3})\s*(?:cây\s*)?(?:tặng|tang|\+)\s*(\d{1,3})\b/i);
+  if(giftCombo)return +giftCombo[1]+ +giftCombo[2];
+  const combo=s.match(/\bcombo\s*(\d{1,3})\b/i);if(combo)return +combo[1];
+  const plantGift=s.match(/\b(\d{1,3})\s*(?:cây|cay|chậu|chau)\s*(?:tặng|tang|\+)\s*(\d{1,3})\b/i);if(plantGift)return +plantGift[1]+ +plantGift[2];
+  // Titles such as “Combo của tháng 4 chậu vàng bạc” have the count after “của tháng”.
+  const month=s.match(/\bcombo\s+cua\s+thang\s+(\d{1,2})\s*(?:chậu|chau|cây|cay)\b/i);if(month)return +month[1];
+  const unit=s.match(/\b(\d{1,2})\s*(?:chậu|chau|cây|cay)\b/i);if(unit)return +unit[1];
+  return 0;
+ }
+ // Product Name takes priority. Use SKU only when the title does not identify a pack; never let SKU override “Combo 2” in Product Name.
+ let count=from(p);if(count>0)return count;
+ count=from(sku);if(count>0)return count;
+ count=from(seller);if(count>0)return count;
+ return 1;
+}
+function parseOcrPages(pages){
+ const out=[];
+ for(let pi=0;pi<(pages||[]).length;pi++){
+  const page=pages[pi],pgNo=Number(page.page)||pi+1;let rowsOcr=stockGroupOcrRows(page);
+  if(!rowsOcr.length){const t=String(page.text||'');const parsed=parseText('[[PAGE:'+pgNo+']]\n'+t);out.push(...parsed);continue}
+  const pageText=[String(page.text||''),...rowsOcr.map(r=>r.text)].join('\n');const ids=[...pageText.matchAll(/(?:Order\s*ID|Order\s*(?:No|Number)|Mã\s*đơn(?:\s*hàng)?)\s*[:#-]?\s*(\d{10,})/gi)].map(m=>m[1]);const order=ids[0]||('TRANG_'+String(pgNo).padStart(3,'0'));
+  let header=-1,footer=rowsOcr.length;
+  for(let i=0;i<rowsOcr.length;i++){const f=fold(rowsOcr[i].text);if(header<0&&f.includes('product name'))header=i;if(header>=0&&i>header&&f.includes('qty total')){footer=i;break}}
+  if(header<0)header=rowsOcr.findIndex(r=>fold(r.text).split(' ').includes('qty'));
+  if(header<0)header=0;
+  const itemRows=[];
+  for(let i=header+1;i<footer;i++){
+   const q=rowsOcr[i].qtyEls||[];if(q.length){const v=Number(q[q.length-1].text);if(Number.isFinite(v)&&v>=0)itemRows.push({i,qty:v})}
+  }
+  // If OCR merges Qty Total or fails to place a Qty element, use a conservative textual fallback.
+  if(!itemRows.length){
+   const linePage=String(page.text||'');const parsed=parseText('[[PAGE:'+pgNo+']]\n'+linePage);out.push(...parsed);continue;
+  }
+  for(let k=0;k<itemRows.length;k++){
+   const start=itemRows[k].i,next=k+1<itemRows.length?itemRows[k+1].i:footer;
+   const block=rowsOcr.slice(start,next);const productLines=block.map(r=>r.left).filter(Boolean);const productText=productLines.join(' ').replace(/\s+/g,' ').trim();
+   const skuText=block.map(r=>r.sku).filter(Boolean).join(' '),sellerText=block.map(r=>r.seller).filter(Boolean).join(' ');
+   const matched=stockProductMatch(productLines[0]||productText);let name=matched?matched.name:('CHƯA NHẬN DIỆN: '+(productText||'dòng sản phẩm '+(k+1)).slice(0,70));
+   const pack=stockPackCount(productLines[0]||productText,skuText,sellerText);let qty=itemRows[k].qty;let confidence='';
+   const size=stockPackSize(name,productText,skuText,sellerText);confidence=size.confidence;
+   if(!matched)confidence+=' · tên cây cần xác nhận';
+   if(!order||order.startsWith('TRANG_'))confidence+=' · mã đơn chưa đọc được';
+   const src=productText+(skuText?' | SKU: '+skuText:'')+(sellerText?' | Seller SKU: '+sellerText:'');
+   out.push({order,name,size:size.size,qty:Math.max(0,qty)*pack,source:src,confidence,page:pgNo});
+  }
+ }
+ return out;
+}
+
+function aggregateDemand(){let m=new Map();rows.filter(r=>String(r.name||'').trim()&&(Number(r.qty)||0)>0).forEach(r=>{let key=fold(r.name)+'||'+fold(r.size||'Chưa rõ');if(!m.has(key))m.set(key,{name:normalizePlant(r.name),size:r.size||'Chưa rõ',orders:new Set(),qty:0,lines:0});let a=m.get(key);a.orders.add(r.order);a.qty+=Number(r.qty)||0;a.lines++});return [...m.values()].map(a=>({...a,orderCount:a.orders.size})).sort((a,b)=>b.qty-a.qty)}
+function orderGroups(){let m=new Map();rows.filter(r=>String(r.name||'').trim()&&(Number(r.qty)||0)>0).forEach(r=>{let k=r.order||'CHƯA_XÁC_ĐỊNH';if(!m.has(k))m.set(k,{order:k,qty:0,lines:0,items:[]});let o=m.get(k);o.qty+=Number(r.qty)||0;o.lines++;o.items.push(r)});return [...m.values()]}
+function perItemGroups(){
+ // Bước 1: cộng các dòng trùng cùng cây/quy cách trong cùng một đơn.
+ const perOrderProduct=new Map();
+ rows.filter(r=>String(r.name||'').trim()&&(Number(r.qty)||0)>0).forEach(r=>{
+   const order=r.order||'CHƯA_XÁC_ĐỊNH';
+   const size=r.size||'Chưa rõ';
+   const name=normalizePlant(r.name);const key=order+'||'+fold(name)+'||'+fold(size);
+   if(!perOrderProduct.has(key)) perOrderProduct.set(key,{order,name,size,qty:0});
+   perOrderProduct.get(key).qty+=Math.max(0,Number(r.qty)||0);
+ });
+ // Bước 2: nhóm theo tên cây + quy cách + số cây của loại đó trong một đơn.
+ const groups=new Map();
+ perOrderProduct.forEach(p=>{
+   const key=fold(p.name)+'||'+fold(p.size)+'||'+p.qty;
+   if(!groups.has(key)) groups.set(key,{name:p.name,size:p.size,combo:p.qty,orders:new Set()});
+   groups.get(key).orders.add(p.order);
+ });
+ return [...groups.values()].map(g=>({
+   name:g.name,size:g.size,qty:g.combo,combo:g.combo,
+   orderCount:g.orders.size,total:g.combo*g.orders.size
+ })).sort((a,b)=>a.name.localeCompare(b.name,'vi')||a.size.localeCompare(b.size,'vi')||a.combo-b.combo);
+}
+function totalStats(){let valid=rows.filter(r=>String(r.name||'').trim()&&(Number(r.qty)||0)>0),orders=orderGroups(),demand=aggregateDemand();return {orders:orders.length,plants:valid.reduce((a,r)=>a+(Number(r.qty)||0),0),types:new Set(valid.map(r=>r.name)).size,sizes:new Set(valid.map(r=>r.size||'Chưa rõ')).size,demand}}
+function table(headers,body){if(!body.length)return '<div class="empty">Chưa có dữ liệu. Hãy nhập PDF hoặc nạp dữ liệu minh họa.</div>';return '<div class="tablewrap"><table><thead><tr>'+headers.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+body.join('')+'</tbody></table></div>'}
+function renderItemsEdit(){let body=rows.map((r,i)=>`<tr><td>${i+1}</td><td><input class="inline-edit" data-i="${i}" data-k="order" value="${esc(r.order)}"></td><td><input class="inline-edit" data-i="${i}" data-k="name" value="${esc(r.name)}"></td><td><input class="inline-edit" data-i="${i}" data-k="size" value="${esc(r.size)}" placeholder="C7"></td><td><input class="inline-edit" type="number" min="0" data-i="${i}" data-k="qty" value="${esc(r.qty)}"></td><td><select class="inline-edit" data-i="${i}" data-k="confidence"><option value="${esc(r.confidence||'Cần kiểm tra')}" selected>${esc(r.confidence||'Cần kiểm tra')}</option><option value="Đã xác nhận">Đã xác nhận</option><option value="Cần kiểm tra">Cần kiểm tra</option></select></td><td><button class="btn danger" data-del="${i}" style="padding:5px 8px">Xóa</button></td></tr>`);$('itemsTable').innerHTML=table(['#','Mã/nhóm đơn','Tên cây (có thể sửa)','Quy cách','SL cây','Nhận diện',''],body);$('itemsTable').querySelectorAll('[data-i]').forEach(el=>el.addEventListener('change',()=>{let r=rows[+el.dataset.i];r[el.dataset.k]=el.dataset.k==='qty'?Math.max(0,+el.value):el.value;renderAll()}));$('itemsTable').querySelectorAll('[data-del]').forEach(el=>el.onclick=()=>{rows.splice(+el.dataset.del,1);renderAll()})}
+function renderAll(){
+ renderItemsEdit();
+ let s=totalStats(), orders=orderGroups(), pg=perItemGroups();
+ $('stats').innerHTML=[['Đơn/nhóm đơn',s.orders],['Tổng số cây',num(s.plants)],['Tên cây',s.types],['Quy cách',s.sizes]].map(a=>`<div class="stat"><b>${a[1]}</b><span>${a[0]}</span></div>`).join('');
+ let unknown=rows.filter(r=>!r.size||!r.name||/cần|chưa|không/i.test(String(r.confidence||''))||(r.order||'').startsWith('TRANG_')).length;
+ $('health').innerHTML=`<p><span class="badge ok">Đã trích xuất ${rows.length} dòng</span> <span class="badge warn">${unknown} dòng cần kiểm tra</span></p><p class="muted">File nguồn: ${esc(fileName||'Dữ liệu thủ công/minh họa')}. Bản nhận diện sẽ đánh dấu cần kiểm tra nếu PDF không có mã đơn rõ ràng.</p>`;
+ $('topTable').innerHTML=table(['Tên cây','Quy cách','Số nhóm đơn','Tổng cây'],s.demand.slice(0,12).map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.size)}</td><td class="num">${num(x.orderCount)}</td><td class="num"><b>${num(x.qty)}</b></td></tr>`));
+ $('demandTable').innerHTML=table(['Tên cây','Quy cách','Số nhóm đơn','Số dòng','Tổng cây'],s.demand.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.size)}</td><td class="num">${num(x.orderCount)}</td><td class="num">${num(x.lines)}</td><td class="num"><b>${num(x.qty)}</b></td></tr>`));
+ $('perItemTable').innerHTML=table(['Tên cây','Quy cách','Combo (cây/đơn)','Số đơn cùng cây + quy cách + combo','Tổng số cây'],pg.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.size)}</td><td class="num"><b>${num(x.combo)} cây/đơn</b></td><td class="num">${num(x.orderCount)}</td><td class="num"><b>${num(x.total)}</b></td></tr>`));
+ let og=orders.map(o=>({...o,itemsCount:o.items.length}));let bins=new Map();og.forEach(o=>bins.set(o.qty,(bins.get(o.qty)||0)+1));let sorted=[...bins].sort((a,b)=>a[0]-b[0]);
+ $('perOrderTable').innerHTML=table(['Tổng số cây/đơn','Số đơn/nhóm','Tổng cây của nhóm'],sorted.map(([qty,count])=>`<tr><td>${num(qty)} cây</td><td class="num">${num(count)}</td><td class="num"><b>${num(qty*count)}</b></td></tr>`));
+ let dm=s.demand;const allStock=new Map();catalog.forEach(p=>{const n=baseCatalogName(p.name)||p.name;const k=n+'||'+(p.size||'Chưa rõ');if(!allStock.has(k))allStock.set(k,{name:n,size:p.size||'Chưa rõ',qty:0})});dm.forEach(x=>{const k=x.name+'||'+x.size;allStock.set(k,{name:x.name,size:x.size,qty:x.qty})});$('stockTable').innerHTML=table(['Tên cây','Quy cách','Nhu cầu','Tồn kho khả dụng','Cần bổ sung'],[...allStock.values()].sort((a,b)=>(b.qty-a.qty)||a.name.localeCompare(b.name,'vi')).map(x=>{let k=x.name+'||'+x.size, val=stock[k]??0, need=Math.max(0,x.qty-val);return `<tr><td>${esc(x.name)}</td><td>${esc(x.size)}</td><td class="num">${num(x.qty)}</td><td><input class="inline-edit" type="number" min="0" data-stock="${esc(k)}" value="${val}"></td><td class="num"><span class="badge ${need?'bad':'ok'}">${num(need)}</span></td></tr>`}).join(''));$('stockTable').querySelectorAll('[data-stock]').forEach(el=>el.onchange=()=>{stock[el.dataset.stock]=Math.max(0,+el.value);saveAll();renderAll()});
+}
+let currentOcrCallbackResolve=null;
+window.__rgsPdfOcrProgress=function(done,total){setStatus(`Đang OCR trang ${done}/${total}…`,Math.min(90,Math.round(done/Math.max(1,total)*90)))};
+window.__rgsPdfOcrResult=function(result){if(currentOcrCallbackResolve){currentOcrCallbackResolve(result);currentOcrCallbackResolve=null}};
+async function readPdf(){
+ const f=$('pdfFile').files[0];if(!f){setStatus('Vui lòng chọn một file PDF.',0);return}if(!/\.pdf$/i.test(f.name)&&f.type!=='application/pdf'){setStatus('Tệp đã chọn không phải PDF.',0);return}if(f.size>25*1024*1024){setStatus('PDF lớn hơn 25 MB. Hãy tách PDF thành các phần nhỏ hơn rồi nhập lại.',0);return}if(!window.AndroidBridge?.ocrSelectedPdf){setStatus('Chức năng OCR PDF chạy trong APK Android. Trong bản xem thử, hãy dán văn bản OCR vào ô “Xem văn bản PDF”.',0);$('rawBox').classList.remove('hidden');return}
+ fileName=f.name;setStatus('Đang chuẩn bị PDF…',3);
+ try{const bytes=new Uint8Array(await f.arrayBuffer());let hash=2166136261;for(let i=0;i<bytes.length;i++)hash=Math.imul(hash^bytes[i],16777619);const fingerprint=(hash>>>0).toString(16)+'_'+bytes.length;const seen=importedFiles[fingerprint];if(seen&&!confirm(`Tệp này đã nhập trước đây (${seen}). Nhập lại sẽ thay thế danh sách kết quả hiện tại, không cộng thêm vào dữ liệu cũ. Tiếp tục?`)){setStatus('Đã hủy nhập tệp trùng.',0);return}
+ setStatus('Đang OCR PDF trên điện thoại…',5);
+ const result=await new Promise((resolve,reject)=>{let timeout=setTimeout(()=>{currentOcrCallbackResolve=null;reject(new Error('OCR quá thời gian chờ. Hãy thử tách PDF thành ít trang hơn.'))},180000);currentOcrCallbackResolve=(x)=>{clearTimeout(timeout);resolve(x)};AndroidBridge.ocrSelectedPdf('__rgsPdfOcrResult')});if(result?.error)throw new Error(result.error);const pages=Array.isArray(result?.pages)?result.pages:[];raw=pages.map(p=>`[[PAGE:${p.page}]]\n${p.text||''}`).join('\n');$('rawText').value=raw;rows=parseOcrPages(pages);importedFiles[fingerprint]=new Date().toLocaleString('vi-VN');localStorage.setItem('rgs_imported_files',JSON.stringify(importedFiles));saveAll();const orderCount=new Set(rows.map(r=>r.order).filter(x=>x&&!String(x).startsWith('TRANG_'))).size;const reviewCount=rows.filter(r=>/kiểm tra|cần xác nhận|chưa đọc được|chưa nhận diện|mặc định c7|không ghi rõ/i.test(String(r.confidence||''))).length;const noOrder=rows.filter(r=>(r.order||'').startsWith('TRANG_')).length;setStatus(`Đã OCR ${pages.length} trang · ${orderCount} mã đơn · ${rows.length} dòng sản phẩm · ${reviewCount} dòng cần kiểm tra. ${noOrder?noOrder+' dòng thiếu mã đơn. ':''}`,100);renderAll();switchTab('home');if(!raw.trim())setStatus('OCR không trích được chữ từ PDF. Có thể PDF bị mờ, bảo vệ hoặc trang quá khó đọc.',100)
+ }catch(e){console.error(e);setStatus('Không đọc được PDF: '+(e?.message||e),0)}
+}
+$('readPdf').onclick=readPdf;
+$('showRaw').onclick=()=>$('rawBox').classList.toggle('hidden');
+$('reparse').onclick=()=>{raw=$('rawText').value;rows=parseText(raw);setStatus(`Đã phân tích lại văn bản, tìm thấy ${rows.length} dòng cây; kiểm tra lại mã đơn, quy cách, số lượng.`,100);saveAll();renderAll()};
+$('addRow').onclick=()=>{rows.push({order:'CẦN_NHẬP_MÃ_ĐƠN',name:'',size:'',qty:1,source:'Nhập thủ công',confidence:'Nhập thủ công · cần xác nhận'});saveAll();renderAll()};
+$('clear').onclick=()=>{if(confirm('Xóa kết quả nhập PDF hiện tại? Tồn kho và danh mục cây vẫn được giữ.')){rows=[];raw='';fileName='';$('rawText').value='';saveAll();setStatus('Đã xóa kết quả nhập PDF.',0);renderAll()}};
+function csvEscape(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
+function downloadText(name,text,mime='text/csv;charset=utf-8;'){if(window.AndroidBridge?.saveTextFile){try{AndroidBridge.saveTextFile(name,btoa(unescape(encodeURIComponent(text))));setStatus('Đã yêu cầu lưu '+name+' vào thư mục tải xuống.',100);return}catch(e){console.warn(e)}}let blob=new Blob([text],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+function downloadCsv(name,headers,data){let text='\ufeff'+[headers,...data].map(r=>r.map(csvEscape).join(',')).join('\r\n');downloadText(name,text)}
+$('exportDemand').onclick=()=>downloadCsv('roll_garden_stock_nhu_cau.csv',['Tên cây','Quy cách','Số đơn/nhóm','Số dòng','Tổng cây'],aggregateDemand().map(x=>[x.name,x.size,x.orderCount,x.lines,x.qty]));
+$('exportPerItem').onclick=()=>downloadCsv('roll_garden_stock_so_cay_tung_loai_moi_don.csv',['Tên cây','Quy cách','Combo (cây/đơn)','Số đơn cùng combo','Tổng cây'],perItemGroups().map(x=>[x.name,x.size,x.qty,x.orderCount,x.total]));
+$('exportOrders').onclick=()=>{let bins=new Map();orderGroups().forEach(o=>bins.set(o.qty,(bins.get(o.qty)||0)+1));downloadCsv('roll_garden_stock_tong_cay_moi_don.csv',['Tổng cây/đơn','Số đơn','Tổng cây nhóm'],[...bins].sort((a,b)=>a[0]-b[0]).map(([q,c])=>[q,c,q*c]))};
+$('exportAll').onclick=()=>downloadCsv('roll_garden_stock_chi_tiet.csv',['Mã/nhóm đơn','Tên cây','Quy cách','Số lượng cây','Nhận diện','Dòng nguồn'],rows.map(r=>[r.order,r.name,r.size,r.qty,r.confidence,r.source]));
+$('demo').onclick=()=>{fileName='DU_LIEU_MINH_HOA.pdf';rows=[
+{order:'DH001',name:'Nguyệt quế Thái',size:'C7',qty:3,source:'Nguyệt quế Thái C7 SL: 3',confidence:'Cần kiểm tra'},
+{order:'DH001',name:'Cẩm tú mai',size:'C9',qty:2,source:'Cẩm tú mai C9 SL: 2',confidence:'Cần kiểm tra'},
+{order:'DH002',name:'Nguyệt quế Thái',size:'C7',qty:5,source:'Nguyệt quế Thái C7 SL: 5',confidence:'Cần kiểm tra'},
+{order:'DH003',name:'Nguyệt quế Thái',size:'C7',qty:5,source:'Nguyệt quế Thái C7 SL: 5',confidence:'Cần kiểm tra'},
+{order:'DH004',name:'Kim tiền',size:'C9',qty:2,source:'Kim tiền C9 SL: 2',confidence:'Cần kiểm tra'},
+{order:'DH004',name:'Phát tài',size:'C7',qty:3,source:'Phát tài C7 SL: 3',confidence:'Cần kiểm tra'},
+{order:'DH005',name:'Nguyệt quế Thái',size:'C7',qty:1,source:'Nguyệt quế Thái C7 SL: 1',confidence:'Cần kiểm tra'},
+{order:'DH006',name:'Cẩm tú mai',size:'C7',qty:4,source:'Cẩm tú mai C7 SL: 4',confidence:'Cần kiểm tra'},
+{order:'DH007',name:'Nguyệt quế Thái',size:'C9',qty:2,source:'Nguyệt quế Thái C9 SL: 2',confidence:'Cần kiểm tra'}];setStatus('Đã nạp dữ liệu kiểm thử. Đây không phải dữ liệu thật.',100);saveAll();renderAll();switchTab('overview')};
+function saveAll(){try{localStorage.setItem('rgs_rows',JSON.stringify(rows));localStorage.setItem('rgs_catalog',JSON.stringify(catalog));localStorage.setItem('rgs_stock',JSON.stringify(stock));localStorage.setItem('rgs_raw',raw);localStorage.setItem('rgs_file_name',fileName);localStorage.setItem('rgs_imported_files',JSON.stringify(importedFiles))}catch(e){console.warn('Không thể lưu cục bộ',e);setStatus('Bộ nhớ trình duyệt gần đầy. Hãy xuất dữ liệu sao lưu.',0)}}
+function renderCatalog(){const body=catalog.map((p,i)=>`<tr><td>${i+1}</td><td><input class="inline-edit" data-ci="${i}" data-ck="name" value="${esc(p.name)}"></td><td><input class="inline-edit" data-ci="${i}" data-ck="size" value="${esc(p.size)}"></td><td><button class="btn danger" style="padding:5px 8px" data-cdel="${i}">Xóa</button></td></tr>`);$('catalogTable').innerHTML=table(['#','Tên cây / tên sản phẩm','Quy cách mặc định',''],body);$('catalogTable').querySelectorAll('[data-ci]').forEach(el=>el.onchange=()=>{catalog[+el.dataset.ci][el.dataset.ck]=el.value.trim();saveAll();renderCatalog()});$('catalogTable').querySelectorAll('[data-cdel]').forEach(el=>el.onclick=()=>{if(confirm('Xóa cây này khỏi danh mục nhận diện?')){catalog.splice(+el.dataset.cdel,1);saveAll();renderAll()}})}
+$('addCatalog').onclick=()=>{catalog.push({name:'Tên cây mới',size:'C7'});saveAll();renderAll();switchTab('catalog')};
+$('importCatalogBtn').onclick=()=>$('catalogFile').click();
+$('catalogFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const obj=JSON.parse(await f.text());const list=Array.isArray(obj)?obj:(Array.isArray(obj.catalog)?obj.catalog:null);if(!list)throw new Error('JSON không có mảng catalog');const next=list.map(p=>({name:String(p.name||p.plantName||'').trim(),size:String(p.size||p.quyCach||'').trim()})).filter(p=>p.name);if(!next.length)throw new Error('Không tìm thấy tên cây trong JSON');if(confirm(`Thay danh mục hiện tại bằng ${next.length} dòng cây trong file?`)){catalog=next;saveAll();renderAll();switchTab('catalog');setStatus('Đã nhập danh mục JSON. Hãy kiểm tra các tên và quy cách.',100)}}catch(err){alert('Không nhập được danh mục: '+err.message)}finally{e.target.value=''}};
+$('exportCatalogBtn').onclick=()=>downloadText('roll_garden_stock_danh_muc.json',JSON.stringify(catalog,null,2),'application/json');
+$('exportBackup').onclick=()=>{saveAll();downloadText('roll_garden_stock_backup.json',JSON.stringify({app:'ROLL GARDEN STOCK',version:'1.0.0',exportedAt:new Date().toISOString(),rows,catalog,stock,raw,fileName,importedFiles},null,2),'application/json')};
+$('importBackupBtn').onclick=()=>$('backupFile').click();
+$('backupFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const d=JSON.parse(await f.text());if(!d||d.app!=='ROLL GARDEN STOCK'||!Array.isArray(d.rows)||!Array.isArray(d.catalog)||typeof d.stock!=='object')throw new Error('File không phải bản sao lưu ROLL GARDEN STOCK hợp lệ');if(!confirm('Khôi phục sẽ thay thế kết quả, danh mục và tồn kho hiện tại. Tiếp tục?'))return;rows=d.rows;catalog=d.catalog;stock=d.stock||{};raw=String(d.raw||'');fileName=String(d.fileName||'');importedFiles=d.importedFiles||{};$('rawText').value=raw;saveAll();renderAll();switchTab('overview');setStatus('Đã khôi phục bản sao lưu.',100)}catch(err){alert('Không khôi phục được: '+err.message)}finally{e.target.value=''}};
+try{rows=JSON.parse(localStorage.getItem('rgs_rows')||'[]')}catch(e){rows=[]}
+try{catalog=JSON.parse(localStorage.getItem('rgs_catalog')||'null')||SEED_CATALOG.map(x=>({...x}))}catch(e){catalog=SEED_CATALOG.map(x=>({...x}))}
+try{stock=JSON.parse(localStorage.getItem('rgs_stock')||'{}')}catch(e){stock={}}
+try{importedFiles=JSON.parse(localStorage.getItem('rgs_imported_files')||'{}')}catch(e){importedFiles={}}
+try{raw=localStorage.getItem('rgs_raw')||'';fileName=localStorage.getItem('rgs_file_name')||'';if(raw)$('rawText').value=raw}catch(e){}
+const renderAllOriginal=renderAll;renderAll=function(){renderAllOriginal();renderCatalog()};
+// Auto-save edited order rows; preserve source and confidence.
+const renderItemsEditOriginal=renderItemsEdit;
+renderItemsEdit=function(){renderItemsEditOriginal();$('itemsTable').querySelectorAll('[data-i]').forEach(el=>{el.addEventListener('change',()=>saveAll())})};
+renderAll();
+</script>
+</body>
+</html>
